@@ -298,7 +298,7 @@ public class Main {
    }
 }
 ```
-
+<details>
 <summary>Инструкция для подключения androidx.tracing</summary>
 
 Если ваши билд-скрипты написаны на Groovy то инструкция по подключению в целом такая же с поправкой на синтаксис Groovy.
@@ -309,6 +309,7 @@ dependencies {
     implementation("androidx.tracing:tracing:1.2.0")
 }
 ```
+</details>
 
 Как ByteWeaver вставляет вызовы в начало методов:
 - Вставляется всегда вызов статической функции, при этом модификатор `static` указывать не нужно
