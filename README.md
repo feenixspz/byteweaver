@@ -301,8 +301,6 @@ public class Main {
 <details>
 <summary>Инструкция для подключения androidx.tracing</summary>
 
-Если ваши билд-скрипты написаны на Groovy то инструкция по подключению в целом такая же с поправкой на синтаксис Groovy.
-
 В вашем `<app>/build.gradle.kts` добавьте зависимость:
 ```kotlin
 dependencies {
