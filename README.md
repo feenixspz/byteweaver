@@ -227,12 +227,12 @@ class * {
 
 ByteWeaver позволяет добавлять вызовы методов в начало тела ваших методов.
 
-В любой метод аннотированный `@AutoTraceCompat` вставить вызов метода `TraceCompat.beginSection` с параметром `trace` (о нем ниже):
+В любой метод аннотированный `@AutoTraceCompat` вставить вызов метода `androidx.tracing.Trace.beginSection` с параметром `trace` (о нем ниже):
 ```
 class * {
     @ru.ok.android.commons.os.AutoTraceCompat
     * *(***) {
-        before void TraceCompat.beginTraceSection(trace);
+        before void androidx.tracing.Trace.beginSection(trace);
     }
 }
 ```
@@ -250,7 +250,7 @@ public class Main {
 ```java
 public class Main {
     public static void main(String[] args) {
-        TraceCompat.beginTraceSection("Main.main(String[])");
+        androidx.tracing.Trace.beginSection("Main.main(String[])");
         System.out.println("Hellow World");
     }
 }
@@ -267,12 +267,12 @@ public class Main {
 
 ByteWeaver позволяет добавлять вызовы методов в конец тела ваших методов.
 
-В конец любого метода аннотированный `@AutoTraceCompat` вставить вызов метода `TraceCompat.beginSection` с параметром `trace` (о нем ниже):
+В конец любого метода аннотированный `@AutoTraceCompat` вставить вызов метода `androidx.tracing.Trace.endSection()` с параметром `trace` (о нем ниже):
 ```
 class * {
     @ru.ok.android.commons.os.AutoTraceCompat
     * *(***) {
-        after void TraceCompat.beginTraceSection(trace);
+        after void androidx.tracing.Trace.endSection();
     }
 }
 ```
@@ -293,9 +293,20 @@ public class Main {
         try {
             System.out.println("Hellow World");
         } finally {
-            TraceCompat.endTraceSection();
+            androidx.tracing.Trace.endSection();
         }
    }
+}
+```
+
+<summary>Инструкция для подключения androidx.tracing</summary>
+
+Если ваши билд-скрипты написаны на Groovy то инструкция по подключению в целом такая же с поправкой на синтаксис Groovy.
+
+В вашем `<app>/build.gradle.kts` добавьте зависимость:
+```kotlin
+dependencies {
+    implementation("androidx.tracing:tracing:1.2.0")
 }
 ```
 
